@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class StstisticController extends GetxController {
+class StatisticController extends GetxController {
   final months = ['Jan', 'Feb', 'Mar', 'Apr', 'Jun', 'Jul'];
 
   final incomeData = <double>[20000, 20000, 26000, 20000, 24000, 21000].obs;

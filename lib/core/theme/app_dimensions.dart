@@ -94,5 +94,9 @@ class AppDimensions {
   static const double size70 = 70.0;
   static const double size75 = 75.0;
   static const double size80 = 80.0;
+  static const double size100 = 100.0;
   static const double size150 = 150.0;
+  static const double size180 = 180.0;
+  static const double size280 = 280.0;
+  static const double size510 = 550.0;
 }

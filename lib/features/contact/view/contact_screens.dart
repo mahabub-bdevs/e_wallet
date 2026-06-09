@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../core/core.dart';
+import '../../../routes/app_routes.dart';
 import '../controller/contact_controller.dart';
 import '../model/contact_model.dart';
 import '../widgets/contact_item.dart';
@@ -24,28 +25,32 @@ class ContactScreens extends StatelessWidget {
           color: AppColors.backgroundDark,
         ),
         centerTitle: true,
-
         leading: Padding(
           padding: const EdgeInsets.only(left: 15.0, top: 7, bottom: 8),
-          child: Container(
-            height: AppDimensions.size30.h,
-            width: AppDimensions.size30.w,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(AppDimensions.size10.r),
-              border: BoxBorder.all(color: AppColors.borderLight, width: 2),
-            ),
-            child: Align(
-              alignment: AlignmentGeometry.center,
-              child: Icon(
-                Icons.arrow_back_ios,
-                size: AppDimensions.size15.h,
-                color: AppColors.backgroundDark,
+          child: GestureDetector(
+            onTap: Get.back,
+            child: Container(
+              height: AppDimensions.size30.h,
+              width: AppDimensions.size30.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(AppDimensions.size10.r),
+                border: BoxBorder.all(color: AppColors.borderLight, width: 2),
+              ),
+              child: Align(
+                alignment: AlignmentGeometry.center,
+                child: Padding(
+                  padding: EdgeInsets.only(left: getWidth(AppDimensions.size7)),
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    size: AppDimensions.size15.h,
+                    color: AppColors.backgroundDark,
+                  ),
+                ),
               ),
             ),
           ),
         ),
       ),
-
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
@@ -63,7 +68,6 @@ class ContactScreens extends StatelessWidget {
                     Icons.search,
                     color: AppColors.backgroundDark.withValues(alpha: 0.5),
                   ),
-
                   suffixIcon: controller.searchQuery.isNotEmpty
                       ? IconButton(
                           icon: const Icon(Icons.clear, color: Colors.grey),
@@ -80,39 +84,39 @@ class ContactScreens extends StatelessWidget {
                   if (controller.contactData.isEmpty) {
                     return const EmptyContact();
                   }
-                  return GestureDetector(
-                    onTap: () {
-                      print("Contact Selected");
-                    },
-                    child: ListView.builder(
-                      padding: EdgeInsets.zero,
-                      itemCount: controller.combinedList.length,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        final item = controller.combinedList[index];
-                        if (item is String) {
-                          return Padding(
-                            padding: EdgeInsets.only(top: 10.h),
-                            child: CustomText(
-                              text: item,
-                              fontSize: AppDimensions.size10.sp,
-                              color: AppColors.backgroundDark.withValues(
-                                alpha: 0.7,
-                              ),
+                  return ListView.builder(
+                    padding: EdgeInsets.zero,
+                    itemCount: controller.combinedList.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      final item = controller.combinedList[index];
+                      if (item is String) {
+                        return Padding(
+                          padding: EdgeInsets.only(top: 10.h),
+                          child: CustomText(
+                            text: item,
+                            fontSize: AppDimensions.size10.sp,
+                            color: AppColors.backgroundDark.withValues(
+                              alpha: 0.7,
                             ),
-                          );
-                        }
+                          ),
+                        );
+                      }
 
-                        if (item is ContactModel) {
-                          return ContactItem(
+                      if (item is ContactModel) {
+                        return GestureDetector(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.transfer, arguments: item);
+                          },
+                          child: ContactItem(
                             image: item.imageUrl,
                             title: item.name,
                             subTitle: item.bankAccount,
-                          );
-                        }
-                        return null;
-                      },
-                    ),
+                          ),
+                        );
+                      }
+                      return null;
+                    },
                   );
                 }),
               ),

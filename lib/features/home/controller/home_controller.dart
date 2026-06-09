@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../core/utils/app_icons.dart';
 import '../model/payment_list_model.dart';
 
 class HomeController extends GetxController {
-  // final HomeRepository _homeRepository = Get.find<HomeRepository>();
+
   RxList<PaymentItem> paymentList = RxList([]);
   @override
   void onInit() {

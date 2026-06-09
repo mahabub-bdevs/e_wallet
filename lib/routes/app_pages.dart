@@ -1,9 +1,11 @@
-
 import 'package:get/get.dart';
 import '../features/contact/binding/contact_binding.dart';
 import '../features/contact/view/contact_screens.dart';
-import '../features/statistic/binding/ststistic_binding.dart';
-import '../features/statistic/view/ststistic_screen.dart';
+import '../features/statistic/binding/statistic_binding.dart';
+import '../features/statistic/view/statistic_screen.dart';
+import '../features/transfer/binding/transfer_binding.dart';
+import '../features/transfer/view/successfully_screen.dart';
+import '../features/transfer/view/transfer_screen.dart';
 import 'app_routes.dart';
 
 import '../features/splash/view/splash_screen.dart';
@@ -40,8 +42,8 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.statistic,
-      page: () => const StstisticScreen(),
-      binding: StstisticBinding(),
+      page: () => const StatisticScreen(),
+      binding: StatisticBinding(),
       transition: Transition.circularReveal,
       transitionDuration: const Duration(milliseconds: 400),
     ),
@@ -49,6 +51,18 @@ class AppPages {
       name: AppRoutes.contact,
       page: () => const ContactScreens(),
       binding: ContactBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: AppRoutes.transfer,
+      page: () => const TransferScreen(),
+      binding: TransferBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: AppRoutes.successfully,
+      page: () => const SuccessfullyScreen(),
+      binding: TransferBinding(),
       transition: Transition.rightToLeft,
     ),
   ];

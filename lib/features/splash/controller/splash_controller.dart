@@ -22,7 +22,7 @@ class SplashController extends GetxController {
       Get.offAllNamed(AppRoutes.main);
     } else {
       if (hasOnboarded) {
-        Get.offAllNamed(AppRoutes.login);
+        Get.offAllNamed(AppRoutes.home);
       } else {
         Get.offAllNamed(AppRoutes.onboarding);
       }

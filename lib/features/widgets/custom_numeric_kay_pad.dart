@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../core/core.dart';
 
 class CustomNumericKeypad extends StatelessWidget {
   final Function(String) onKeyPressed;
@@ -21,7 +24,10 @@ class CustomNumericKeypad extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      color: Colors.white,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(AppDimensions.size10.r),
+        color: AppColors.elevatedSurfaceLight
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: keys.map((row) {
@@ -61,7 +67,7 @@ class CustomNumericKeypad extends StatelessWidget {
         alignment: Alignment.center,
         child: key == 'backspace'
             ? Icon(
-          Icons.arrow_back_ios_new_rounded,
+          Icons.arrow_circle_left_outlined,
           color: Colors.grey[600],
           size: 22,
         )

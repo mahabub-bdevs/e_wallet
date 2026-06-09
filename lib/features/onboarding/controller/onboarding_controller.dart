@@ -8,6 +8,6 @@ class OnboardingController extends GetxController {
   // Function to complete onboarding and go to Login
   Future<void> completeOnboarding() async {
     await _storageService.setOnboarded();
-    Get.offAllNamed(AppRoutes.login);
+    Get.offAllNamed(AppRoutes.home);
   }
 }

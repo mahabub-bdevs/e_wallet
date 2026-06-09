@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import '../controller/main_controller.dart';
 import '../../home/controller/home_controller.dart';
-import '../../home/repository/home_repository.dart';
 
 class MainBinding extends Bindings {
   @override

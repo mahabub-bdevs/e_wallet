@@ -3,16 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../core/core.dart';
-import '../controller/ststistic_controller.dart';
+import '../controller/statistic_controller.dart';
 import '../widgets/income_expense_chart.dart';
 import '../widgets/transaction_stat_card.dart';
 
-class StstisticScreen extends StatelessWidget {
-  const StstisticScreen({super.key});
+class StatisticScreen extends StatelessWidget {
+  const StatisticScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<StstisticController>();
+    final controller = Get.find<StatisticController>();
     return Scaffold(
       backgroundColor: AppColors.backgroundLight,
       appBar: AppBar(

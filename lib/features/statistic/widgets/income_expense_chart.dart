@@ -4,10 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../core/core.dart';
-import '../controller/ststistic_controller.dart';
+import '../controller/statistic_controller.dart';
 
 class IncomeExpenseChart extends StatelessWidget {
-  final controller = Get.find<StstisticController>();
+  final controller = Get.find<StatisticController>();
+  IncomeExpenseChart({super.key});
 
   @override
   Widget build(BuildContext context) {

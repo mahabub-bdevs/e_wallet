@@ -9,6 +9,7 @@ class IconPath {
   static const String billIcon = '${asset}bill_icon.svg';
   static const String merchantIcon = '${asset}merchant_icon.svg';
   static const String moreIcon = '${asset}more_icon.svg';
+  static const String successfullyIcon = '${asset}sucessfully_icon.jpeg';
 
   // Add other SVG icon names below:
   // static const String home = '${asset}home.svg';
