@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import '../../../core/core.dart';
 import '../../../routes/app_routes.dart';
 import '../../widgets/custom_numeric_kay_pad.dart';
@@ -104,11 +103,22 @@ class _TransferScreenState extends State<TransferScreen> {
                           color: AppColors.primaryLight,
                           text: "Continue",
                           onPressed: () {
+                            final enteredAmount = double.tryParse(
+                                    controller.balanceController.text) ??
+                                0.0;
+
+                            if (enteredAmount < 20) {
+                              return;
+                            }
                             if (controller.balanceController.text.isNotEmpty) {
-                              Get.toNamed(AppRoutes.successfully,arguments: {
-                                'contact': controller.selectedContact,
-                                'amount': controller.balanceController.text.trim(),
-                              },);
+                              Get.toNamed(
+                                AppRoutes.successfully,
+                                arguments: {
+                                  'contact': controller.selectedContact,
+                                  'amount':
+                                      controller.balanceController.text.trim(),
+                                },
+                              );
                             }
                           }),
                       AppDimensions.size20.h.verticalSpace

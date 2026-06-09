@@ -57,22 +57,22 @@ class ContactController extends GetxController {
         isRecent: false,
       ),
       const ContactModel(
-        name: "Md Forjid Islam",
-        bankAccount: "bank - 025 875 96 785",
+        name: "Md Rakhu Prodhan",
+        bankAccount: "bank - 851 754 55 895",
         imageUrl:
             "https://static.vecteezy.com/system/resources/thumbnails/026/136/046/small_2x/business-man-illustration-ai-generative-png.png",
         isRecent: false,
       ),
       const ContactModel(
-        name: "Md Forjid Islam",
-        bankAccount: "bank - 025 875 96 785",
+        name: "Md Sada Prodhan",
+        bankAccount: "bank - 025 785 96 854",
         imageUrl:
             "https://static.vecteezy.com/system/resources/thumbnails/026/136/046/small_2x/business-man-illustration-ai-generative-png.png",
         isRecent: false,
       ),
       const ContactModel(
-        name: "Md Forjid Islam",
-        bankAccount: "bank - 025 875 96 785",
+        name: "Md Masrafi Islam",
+        bankAccount: "bank - 785 986 78 256",
         imageUrl:
             "https://static.vecteezy.com/system/resources/thumbnails/026/136/046/small_2x/business-man-illustration-ai-generative-png.png",
         isRecent: false,
