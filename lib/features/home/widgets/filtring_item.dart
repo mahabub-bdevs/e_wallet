@@ -16,9 +16,16 @@ class FiltringItem extends StatelessWidget {
         bottom: AppDimensions.size10.h,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppDimensions.size10.r),
-        color: AppColors.backgroundLight,
-      ),
+          borderRadius: BorderRadius.circular(AppDimensions.size10.r),
+          color: AppColors.backgroundLight,
+          boxShadow: const [
+            BoxShadow(
+                color: AppColors.borderLight,
+                offset: Offset(0, 1),
+                blurStyle: BlurStyle.inner,
+                blurRadius: 10.0,
+                spreadRadius: 2.0),
+          ]),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
