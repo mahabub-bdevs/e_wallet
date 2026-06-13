@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../core/core.dart';
 import '../../../routes/app_routes.dart';
+import '../../widgets/slide_in_animation.dart';
 import '../controller/contact_controller.dart';
 import '../model/contact_model.dart';
 import '../widgets/contact_item.dart';
@@ -61,21 +62,26 @@ class ContactScreens extends StatelessWidget {
           child: Column(
             children: [
               Obx(
-                () => CustomTextField(
-                  controller: controller.searchController,
-                  hintText: "Search Contact",
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: AppColors.backgroundDark.withValues(alpha: 0.5),
+                () => SlideInAnimation(
+                  index: 0,
+                  baseDuration: 800,
+                  beginOffset: const Offset(-4, 0),
+                  child: CustomTextField(
+                    controller: controller.searchController,
+                    hintText: "Search Contact",
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: AppColors.backgroundDark.withValues(alpha: 0.5),
+                    ),
+                    suffixIcon: controller.searchQuery.isNotEmpty
+                        ? IconButton(
+                            icon: const Icon(Icons.clear, color: Colors.grey),
+                            onPressed: () {
+                              controller.searchController.clear();
+                            },
+                          )
+                        : null,
                   ),
-                  suffixIcon: controller.searchQuery.isNotEmpty
-                      ? IconButton(
-                          icon: const Icon(Icons.clear, color: Colors.grey),
-                          onPressed: () {
-                            controller.searchController.clear();
-                          },
-                        )
-                      : null,
                 ),
               ),
               AppDimensions.size10.h.verticalSpace,
@@ -108,10 +114,16 @@ class ContactScreens extends StatelessWidget {
                           onTap: () {
                             Get.toNamed(AppRoutes.transfer, arguments: item);
                           },
-                          child: ContactItem(
-                            image: item.imageUrl,
-                            title: item.name,
-                            subTitle: item.bankAccount,
+                          child: SlideInAnimation(
+                            index: index,
+                            beginOffset:const Offset(2, 0),
+                            baseDuration: 1000,
+                            curve: Curves.easeOut,
+                            child: ContactItem(
+                              image: item.imageUrl,
+                              title: item.name,
+                              subTitle: item.bankAccount,
+                            ),
                           ),
                         );
                       }

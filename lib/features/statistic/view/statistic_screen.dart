@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../core/core.dart';
+import '../../widgets/slide_in_animation.dart';
 import '../controller/statistic_controller.dart';
 import '../widgets/income_expense_chart.dart';
 import '../widgets/transaction_stat_card.dart';
@@ -106,22 +107,26 @@ class StatisticScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Obx(
-                  () => Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TransactionStatCard(
-                        value: controller.totalIncome.toString(),
-                      ),
-
-                      AppDimensions.size10.w.horizontalSpace,
-                      TransactionStatCard(
-                        boxColor: AppColors.secondaryVariantLight,
-                        value: controller.totalExpense.toString(),
-                        title: "Expense",
-                        icon: Icons.arrow_upward,
-                      ),
-                    ],
+                  () => SlideInAnimation(
+                    index: 0,
+                    baseDuration: 3000,
+                    beginOffset: const Offset(0, -4),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TransactionStatCard(
+                          value: controller.totalIncome.toString(),
+                        ),
+                        AppDimensions.size10.w.horizontalSpace,
+                        TransactionStatCard(
+                          boxColor: AppColors.secondaryVariantLight,
+                          value: controller.totalExpense.toString(),
+                          title: "Expense",
+                          icon: Icons.arrow_upward,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

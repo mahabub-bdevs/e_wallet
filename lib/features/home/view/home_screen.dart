@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../core/core.dart';
 import '../../../core/utils/app_images.dart';
 import '../../../core/widgets/custom_svg_icon.dart';
+import '../../widgets/slide_in_animation.dart';
 import '../controller/home_controller.dart';
 import '../widgets/filtring_item.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -63,28 +64,32 @@ class HomeScreen extends StatelessWidget {
           SizedBox(width: 20.w),
         ],
       ),
-
       body: Column(
         children: [
-          SizedBox(
-            child: Align(
-              alignment: Alignment.center,
-              child: Column(
-                children: [
-                  CustomText(
-                    text: "Available Balance",
-                    fontSize: AppDimensions.size10.sp,
-                    color: AppColors.backgroundLight,
-                  ),
-                  //AppDimensions.size10.h.verticalSpace,
-                  CustomText(
-                    text: "\$ 1000.00",
-                    fontSize: AppDimensions.size20.sp,
-                    color: AppColors.backgroundLight,
-                    fontWeight: FontWeight.w900,
-                  ),
-                  AppDimensions.size40.h.verticalSpace,
-                ],
+          SlideInAnimation(
+            index: 0,
+            baseDuration: 1000,
+            beginOffset: const Offset(-2, 0),
+            child: SizedBox(
+              child: Align(
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    CustomText(
+                      text: "Available Balance",
+                      fontSize: AppDimensions.size10.sp,
+                      color: AppColors.backgroundLight,
+                    ),
+                    //AppDimensions.size10.h.verticalSpace,
+                    CustomText(
+                      text: "\$ 1000.00",
+                      fontSize: AppDimensions.size20.sp,
+                      color: AppColors.backgroundLight,
+                      fontWeight: FontWeight.w900,
+                    ),
+                    AppDimensions.size40.h.verticalSpace,
+                  ],
+                ),
               ),
             ),
           ),
@@ -108,11 +113,16 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AppDimensions.size30.h.verticalSpace,
-                        CustomText(
-                          text: "Payment List",
-                          fontSize: AppDimensions.size12.sp,
-                          color: AppColors.backgroundDark,
+                        AppDimensions.size40.h.verticalSpace,
+                        SlideInAnimation(
+                          index: 0,
+                          baseDuration: 1500,
+                          beginOffset: const Offset(-5, 0),
+                          child: CustomText(
+                            text: "Payment List",
+                            fontSize: AppDimensions.size12.sp,
+                            color: AppColors.backgroundDark,
+                          ),
                         ),
                         AppDimensions.size15.h.verticalSpace,
                         SizedBox(
@@ -123,14 +133,15 @@ class HomeScreen extends StatelessWidget {
                             shrinkWrap: true,
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 4,
-                                  mainAxisSpacing: 15.0,
-                                  crossAxisSpacing: 8.0,
-                                  childAspectRatio: 0.8,
-                                ),
+                              crossAxisCount: 4,
+                              mainAxisSpacing: 15.0,
+                              crossAxisSpacing: 8.0,
+                              childAspectRatio: 0.8,
+                            ),
                             itemBuilder: (context, index) {
                               final data = controller.paymentList[index];
                               return PaymentListItem(
+                                index: index,
                                 onTap: () {
                                   PaymentListOnTap().onTap(index);
                                 },
@@ -141,55 +152,64 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         AppDimensions.size10.h.verticalSpace,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            CustomText(
-                              text: "Promo & Discount",
-                              fontSize: AppDimensions.size10.sp,
-                              fontWeight: FontWeight.w800,
-                              color: AppColors.backgroundDark,
-                            ),
-                            CustomText(
-                              text: "See More",
-                              fontSize: AppDimensions.size8.sp,
-                              color: AppColors.primaryVariantLight,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          child: CarouselSlider(
-                            options: CarouselOptions(
-                              height: 220.0,
-                              autoPlay: true,
-                              enlargeCenterPage: true,
-                              aspectRatio: 19 / 5,
-                              autoPlayCurve: Curves.fastOutSlowIn,
-                              enableInfiniteScroll: true,
-                              autoPlayAnimationDuration: const Duration(
-                                milliseconds: 800,
+                        SlideInAnimation(
+                          index: 0,
+                          baseDuration: 1200,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              CustomText(
+                                text: "Promo & Discount",
+                                fontSize: AppDimensions.size10.sp,
+                                fontWeight: FontWeight.w800,
+                                color: AppColors.backgroundDark,
                               ),
-                              viewportFraction: 0.8,
-                            ),
-                            items: controller.imgList
-                                .map(
-                                  (item) => SizedBox(
-                                    child: Center(
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(
-                                          20.0.r,
-                                        ),
-                                        child: Image.network(
-                                          item,
-                                          fit: BoxFit.cover,
-                                          width: 1000,
+                              CustomText(
+                                text: "See More",
+                                fontSize: AppDimensions.size8.sp,
+                                color: AppColors.primaryVariantLight,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SlideInAnimation(
+                          index: 0,
+                          baseDuration: 2000,
+                          beginOffset: const Offset(-4, 0),
+                          child: SizedBox(
+                            child: CarouselSlider(
+                              options: CarouselOptions(
+                                height: 220.0,
+                                autoPlay: true,
+                                enlargeCenterPage: true,
+                                aspectRatio: 19 / 5,
+                                autoPlayCurve: Curves.fastOutSlowIn,
+                                enableInfiniteScroll: true,
+                                autoPlayAnimationDuration: const Duration(
+                                  milliseconds: 800,
+                                ),
+                                viewportFraction: 0.8,
+                              ),
+                              items: controller.imgList
+                                  .map(
+                                    (item) => SizedBox(
+                                      child: Center(
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(
+                                            20.0.r,
+                                          ),
+                                          child: Image.network(
+                                            item,
+                                            fit: BoxFit.cover,
+                                            width: 1000,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                )
-                                .toList(),
+                                  )
+                                  .toList(),
+                            ),
                           ),
                         ),
                       ],
@@ -205,7 +225,9 @@ class HomeScreen extends StatelessWidget {
                       left: AppDimensions.size30.w,
                       right: AppDimensions.size30.w,
                     ),
-                    child: const FiltringItem(),
+                    child: const FiltringItem(
+                      index: 0,
+                    ),
                   ),
                 ),
               ],

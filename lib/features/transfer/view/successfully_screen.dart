@@ -143,7 +143,7 @@ class SuccessfullyScreen extends StatelessWidget {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
